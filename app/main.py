@@ -1,14 +1,19 @@
+import logging
 from fastapi import FastAPI
-from app.controllers.user_controller import router as user_router
-from app.controllers.workout_controller import router as workout_router
-from app.controllers.auth_controller import router as auth_router
+from dotenv import load_dotenv
+from app.patterns.api_facade import ApiFacade
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+load_dotenv()
 app = FastAPI()
+
+
+api_facade = ApiFacade(app)
+api_facade.register_controllers()
 
 @app.get("/")
 def root():
-    return {"message": "GymGuider API'ye hoş geldiniz!"}
-
-app.include_router(user_router, prefix="/user", tags=["User"])
-app.include_router(workout_router, prefix="/workout", tags=["Workout"])
-app.include_router(auth_router, prefix="/auth", tags=["Auth"])
+    logger.info("Root endpoint called.")
+    return {"message": "Welcome to the GymGuider API!"}

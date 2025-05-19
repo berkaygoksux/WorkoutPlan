@@ -12,3 +12,15 @@ annotated-types~=0.7.0
 itsdangerous~=2.2.0
 Jinja2~=3.1.6
 setuptools~=65.5.0
+pydantic[email]
+h11~=0.16.0
+wheel~=0.41.2
+pytest~=8.3.5
+email_validator~=2.2.0
+click~=8.2.0
+uvicorn~=0.34.2
+httpx~=0.28.1
+packaging~=25.0
+dotenv~=0.9.9
+python-dotenv~=1.1.0
+SQLAlchemy~=2.0.41
