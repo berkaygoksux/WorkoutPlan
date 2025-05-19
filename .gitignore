@@ -10,3 +10,6 @@ gymguidervenv/
 
 # OS files
 .DS_Store
+
+.env
+gymguider.db
