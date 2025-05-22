@@ -4,9 +4,26 @@ __pycache__/
 
 # Virtual environments
 gymguidervenv/
+venv/
+.venv/
 
 # PyCharm project files
 .idea/
+*.iml
 
 # OS files
 .DS_Store
+
+# Environment and database
+.env
+*.env
+gymguider.db
+*.db
+
+# Test and coverage files
+.coverage
+htmlcov/
+.pytest_cache/
+coverage.xml
+*.log
+*.tmp
