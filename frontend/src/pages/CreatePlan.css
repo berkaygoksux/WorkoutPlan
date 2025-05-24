@@ -1,0 +1,72 @@
+.create-plan-wrapper {
+  padding: 3rem;
+  background-color: #111;
+  color: white;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.create-plan-wrapper h1 {
+  margin-bottom: 2rem;
+  color: #00cc66;
+}
+
+.create-plan-wrapper form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: auto;
+}
+
+.create-plan-wrapper input,
+.create-plan-wrapper textarea {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background: #222;
+  color: white;
+}
+
+.create-plan-wrapper button {
+  padding: 0.8rem;
+  background-color: #00cc66;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.section-title {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: #00cc66;
+  text-align: center;
+}
+
+.class-gallery {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.class-item {
+  text-align: center;
+  width: 150px;
+}
+
+.class-item img {
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid #00cc66;
+  box-shadow: 0 0 10px rgba(0, 204, 102, 0.2);
+}
+
+.class-item p {
+  margin-top: 0.5rem;
+  color: white;
+  font-weight: bold;
+}
