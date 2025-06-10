@@ -1,5 +1,5 @@
 import logging
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, status
 from pydantic import BaseModel, EmailStr
 from passlib.context import CryptContext
 from app.models.user import UserPublic, UserInDB
@@ -11,7 +11,9 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from dotenv import load_dotenv
 import os
+from fastapi.security import OAuth2PasswordBearer
 
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -54,7 +56,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     return encoded_jwt
 
 async def get_current_user(
-    token: str,
+    token: str = Depends(oauth2_scheme),
     user_service: UserService = Depends(),
     db: Session = Depends(get_db)
 ) -> UserPublic:

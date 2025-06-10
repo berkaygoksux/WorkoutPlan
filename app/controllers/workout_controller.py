@@ -97,7 +97,6 @@ async def get_exercises(
 
 @router.get("/plans", response_model=List[WorkoutPlan])
 async def get_workout_plans(
-    token: str,  # Token is received as a query parameter
     current_user: UserPublic = Depends(get_current_user),
     plan_service: WorkoutPlanService = Depends(),
     db: Session = Depends(get_db)

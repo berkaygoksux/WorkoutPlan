@@ -1,3 +1,5 @@
+// src/pages/Login.js
+
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Login.css';
@@ -5,14 +7,35 @@ import './Login.css';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
 
-    // Şimdilik sahte giriş (backend yok)
-    localStorage.setItem('user_email', email);
-    navigate('/');
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('user_email', email);
+        navigate('/home');
+      } else {
+        const err = await response.json();
+        setError(err.detail || 'Login failed. Please check your credentials.');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      setError('An unexpected error occurred.');
+    }
   };
 
   return (
@@ -48,6 +71,10 @@ const Login = () => {
             />
             <button type="submit">Login</button>
           </form>
+          <div className="register-link">
+            <p>Don't have an account?</p>
+            <button onClick={() => navigate('/register')}>Register</button>
+          </div>
         </div>
       </div>
     </div>
