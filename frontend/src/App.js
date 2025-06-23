@@ -1,31 +1,80 @@
-// App.js
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Plans from './pages/Plans';
+import WorkoutLogs from './pages/WorkoutLogs';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Plans from './pages/Plans';
-import Exercises from './pages/Exercises';
 import CreatePlan from './pages/CreatePlan';
-import Home from './pages/Home';
+import Exercises from './pages/Exercises';
+
+const PrivateRoute = ({ children, setIsAuthenticated, setUserRole }) => {
+  const token = localStorage.getItem('access_token');
+  if (!token) {
+    setIsAuthenticated(false);
+    setUserRole(null);
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
 
 const App = () => {
-  const [token, setToken] = useState(null);
+  const [userRole, setUserRole] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('access_token'));
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('access_token');
-    setToken(storedToken);
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      setIsAuthenticated(false);
+      setUserRole(null);
+    }
   }, []);
 
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole}>
+              <Home userRole={userRole} setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/plans"
+          element={
+            <PrivateRoute setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole}>
+              <Plans userRole={userRole} setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/logs"
+          element={
+            <PrivateRoute setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole}>
+              <WorkoutLogs userRole={userRole} setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create-plan"
+          element={
+            <PrivateRoute setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole}>
+              <CreatePlan userRole={userRole} setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/exercises"
+          element={
+            <PrivateRoute setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole}>
+              <Exercises userRole={userRole} setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole} />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} setUserRole={setUserRole} />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/home" element={token ? <Home /> : <Navigate to="/login" />} />
-        <Route path="/plans" element={token ? <Plans /> : <Navigate to="/login" />} />
-        <Route path="/exercises" element={token ? <Exercises /> : <Navigate to="/login" />} />
-        <Route path="/create-plan" element={token ? <CreatePlan /> : <Navigate to="/login" />} />
-        <Route path="*" element={<Navigate to={token ? "/home" : "/login"} />} />
       </Routes>
     </Router>
   );

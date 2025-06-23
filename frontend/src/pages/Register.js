@@ -1,43 +1,39 @@
+// src/pages/Register.js
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
 
 const Register = () => {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    role: 'user'
+    role: 'user',
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://127.0.0.1:8000/auth/register', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        alert('Registration successful!');
+        alert('Registration successful! Please log in.');
         navigate('/login');
       } else {
         const errorData = await response.json();
-        alert(`Error: ${errorData.detail}`);
+        alert(`Error: ${errorData.detail || 'Registration failed.'}`);
       }
     } catch (error) {
-      console.error('Registration failed:', error);
-      alert('Something went wrong. Please try again.');
+      alert('Network error: Please ensure the server is running.');
     }
   };
 

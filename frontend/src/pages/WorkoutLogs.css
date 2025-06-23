@@ -1,0 +1,177 @@
+.logs-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem;
+  background: #111;
+  color: #e0e0e0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logs-title {
+  text-align: center;
+  color: #00cc66;
+  margin-bottom: 2rem;
+}
+
+.error-message {
+  color: #cc0033;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.loading-message {
+  text-align: center;
+  color: #ccc;
+}
+
+.log-form {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  background: #1c1c1c;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 2px solid #00cc66;
+  color: #e0e0e0;
+}
+
+.log-form h2 {
+  margin-top: 0;
+  color: #00cc66;
+}
+
+.log-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.log-form select,
+.log-form input,
+.log-form textarea {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  background: #333;
+  color: #e0e0e0;
+}
+
+.log-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.submit-button, .cancel-button {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+.submit-button {
+  background: #00cc66;
+}
+
+.submit-button:hover {
+  background: #00b359;
+}
+
+.cancel-button {
+  background: #cc0033;
+}
+
+.cancel-button:hover {
+  background: #b3002c;
+}
+
+.logs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.log-card {
+  background: #1c1c1c;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 2px solid #00cc66;
+  width: 100%;
+  max-width: 280px;
+  box-shadow: 0 0 10px rgba(0, 204, 102, 0.15);
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.log-card h3 {
+  margin: 0 0 10px;
+  color: #00cc66;
+}
+
+.log-card p {
+  margin: 5px 0;
+  color: #ccc;
+}
+
+.log-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.edit-button, .delete-button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #e0e0e0;
+}
+
+.edit-button {
+  background: #00cc66;
+}
+
+.edit-button:hover {
+  background: #00b359;
+}
+
+.delete-button {
+  background: #cc0033;
+}
+
+.delete-button:hover {
+  background: #b3002c;
+}
+
+.no-logs {
+  text-align: center;
+  color: #ccc;
+  grid-column: span 3;
+}
+
+.back-button {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.8rem 2rem;
+  background: #00cc66;
+  color: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.back-button:hover {
+  background: #00b359;
+}

@@ -6,10 +6,8 @@ from dotenv import load_dotenv
 import os
 import pathlib
 
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 
 load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///gymguider.db")
@@ -20,7 +18,6 @@ if DATABASE_URL.startswith("sqlite:///"):
     DATABASE_URL = f"sqlite:///{absolute_path}"
 logger.info(f"Database URL: {DATABASE_URL}")
 
-
 try:
     engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
     logger.info("Database engine created.")
@@ -30,7 +27,6 @@ except Exception as e:
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
-
 
 class UserDB(Base):
     __tablename__ = "users"
@@ -64,13 +60,12 @@ class WorkoutLogDB(Base):
     user_id = Column(Integer, ForeignKey("users.user_id"), nullable=False)
     exercise_id = Column(Integer, ForeignKey("exercises.exercise_id"), nullable=False)
     exercise_name = Column(String, nullable=False)
-    exercise_description = Column(String, nullable=False)
+    exercise_description = Column(String, nullable=True)  # Opsiyonel
     sets = Column(Integer, nullable=False)
     reps = Column(Integer, nullable=False)
     date = Column(Date, nullable=False)
     duration = Column(Integer, nullable=False)
-    notes = Column(String, default="")
-
+    notes = Column(String, nullable=True)
 
 try:
     Base.metadata.create_all(bind=engine)
@@ -78,7 +73,6 @@ try:
 except Exception as e:
     logger.error(f"Table creation error: {e}")
     raise
-
 
 def get_db():
     db = SessionLocal()
