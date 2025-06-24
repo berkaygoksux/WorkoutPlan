@@ -8,6 +8,11 @@ from app.database import get_db
 
 router = APIRouter()
 
+@router.get("/me", response_model=UserPublic)
+async def read_current_user(current_user: UserPublic = Depends(get_current_user)):
+    return current_user
+
+
 @router.get("/", response_model=List[UserPublic])
 async def get_users(
     current_user: UserPublic = Depends(get_current_user),

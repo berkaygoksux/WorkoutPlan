@@ -1,5 +1,3 @@
-/* src/pages/Login.css */
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -7,12 +5,12 @@ body {
   color: white;
 }
 
-.login-wrapper {
+.register-wrapper {
   display: flex;
   height: 100vh;
 }
 
-.login-left {
+.register-left {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -20,13 +18,13 @@ body {
   background: black;
 }
 
-.login-image {
+.register-image {
   max-width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.login-right {
+.register-right {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -42,21 +40,22 @@ body {
   color: #fff;
 }
 
-.login-container {
+.register-container {
   max-width: 400px;
   margin: 0 auto;
   background: #1a1a1a;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
-.login-container h2 {
+.register-container h2 {
   margin-bottom: 1.5rem;
   color: #fff;
 }
 
-.login-container input {
+.register-container input,
+.register-container select {
   width: 100%;
   padding: 0.9rem;
   margin: 0.6rem 0;
@@ -67,14 +66,15 @@ body {
   color: #fff;
 }
 
-.login-container input:focus {
-  outline: 2px solid #00cc66;
+.register-container input:focus,
+.register-container select:focus {
+  outline: 2px solid #00ccff;
 }
 
-.login-container button {
+.register-container button {
   width: 100%;
   padding: 0.9rem;
-  background-color: #00cc66;
+  background-color: #00ccff;
   color: white;
   border: none;
   border-radius: 8px;
@@ -84,8 +84,8 @@ body {
   margin-top: 1rem;
 }
 
-.login-container button:hover {
-  background-color: #00994d;
+.register-container button:hover {
+  background-color: #0099cc;
 }
 
 .logo-container {
@@ -97,30 +97,4 @@ body {
 .logo-image {
   max-width: 240px;
   height: auto;
-}
-
-.register-link {
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.register-link p {
-  margin-bottom: 0.5rem;
-  color: #ccc;
-}
-
-.register-link button {
-  background: none;
-  border: 1px solid #00cc66;
-  padding: 0.5rem 1.2rem;
-  border-radius: 8px;
-  color: #00cc66;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.register-link button:hover {
-  background-color: #00cc66;
-  color: black;
 }
