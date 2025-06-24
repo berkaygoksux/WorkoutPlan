@@ -91,7 +91,7 @@ WorkoutPlan/
     cd frontend
     ```
 
-2. Create `.env`:
+2. Create `.env` in frontend folder:
     ```
     REACT_APP_API_URL=http://127.0.0.1:8000
     ```
@@ -101,7 +101,7 @@ WorkoutPlan/
     npm install
     ```
 
-4. Start the frontend:
+4. Start the frontend on different terminal:
     ```bash
     npm start
     ```
