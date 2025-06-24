@@ -4,35 +4,40 @@
 
 GymGuider is a web application that allows both trainers and users to manage and track workout plans. The system uses role-based access: trainers can create and assign workout plans and logs; users can view and manage their own plans and logs. The app is designed for efficient and structured fitness planning.
 
+
 ## Project Structure
+
+```
 WorkoutPlan/
 ├── app/
-│ ├── controllers/
-│ │ ├── auth_controller.py
-│ │ ├── user_controller.py
-│ │ ├── workout_controller.py
-│ │ └── workout_log_controller.py
-│ ├── models/
-│ │ ├── exercise.py
-│ │ ├── token.py
-│ │ ├── user.py
-│ │ ├── workout_log.py
-│ │ └── workout_plan.py
-│ ├── patterns/
-│ │ ├── api_facade.py
-│ │ ├── observers.py
-│ │ └── workout_commands.py
-│ ├── services/
-│ │ └── workout_plan_service.py
-│ ├── database.py
-│ └── main.py
+│   ├── controllers/
+│   │   ├── auth_controller.py
+│   │   ├── user_controller.py
+│   │   ├── workout_controller.py
+│   │   └── workout_log_controller.py
+│   ├── models/
+│   │   ├── exercise.py
+│   │   ├── token.py
+│   │   ├── user.py
+│   │   ├── workout_log.py
+│   │   └── workout_plan.py
+│   ├── patterns/
+│   │   ├── api_facade.py
+│   │   ├── observers.py
+│   │   └── workout_commands.py
+│   ├── services/
+│   │   └── workout_plan_service.py
+│   ├── database.py
+│   └── main.py
 ├── frontend/
-│ ├── public/
-│ ├── src/
-│ │ ├── pages/
-│ │ │ └── (React pages)
-│ │ ├── App.js, index.js, etc.
-│ └── .env
+│   ├── public/
+│   ├── src/
+│   │   ├── pages/
+│   │   │   └── (React pages)
+│   │   ├── App.js
+│   │   ├── index.js
+│   │   └── ...
+│   └── .env
 ├── gymguidervenv/
 ├── gymguider.db
 ├── tests/
@@ -40,6 +45,7 @@ WorkoutPlan/
 ├── .env.example
 ├── requirements.txt
 └── README.md
+```
 
 ## Technologies Used
 
